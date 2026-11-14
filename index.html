@@ -3,499 +3,396 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#173b32">
-<title>HELP ME RENT - Noleggia tutto</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#829783">
+<title>Help Me Rent - Noleggia tutto</title>
 <style>
-:root{
---green:#173b32;--green2:#285b49;
---gold:#d8b36b;--cream:#f6f5f0;
---white:#fff;--text:#26352e;
---muted:#78847d;--line:#e8eae5;
+:root {
+  --green:#829783;
+  --dark:#35483a;
+  --cream:#f8f5ed;
+  --gold:#c6a45b;
+  --white:#fff;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--cream);color:var(--text);
-font-family:Arial,sans-serif}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-header{background:var(--green);color:white;position:sticky;
-top:0;z-index:10}
-.container{width:min(1150px,92%);margin:auto}
-nav{display:flex;align-items:center;justify-content:space-between;
-min-height:72px;gap:12px}
-.logo{font-size:23px;font-weight:900;letter-spacing:1px}
-.logo span{color:var(--gold)}
-nav a{color:white;text-decoration:none;font-size:14px}
-nav .links{display:flex;gap:17px;align-items:center}
-.btn{border:0;border-radius:9px;padding:13px 19px;
-background:var(--gold);color:var(--green);font-weight:bold}
-.btn-dark{background:var(--green);color:white}
-.btn-outline{background:transparent;color:white;
-border:1px solid #ffffff80}
-.hero{background:linear-gradient(120deg,#15382f,#32684e);
-color:white;padding:65px 0;text-align:center}
-.hero h1{font-size:clamp(34px,6vw,55px);margin:15px 0}
-.hero h1 span{color:var(--gold)}
-.hero p{line-height:1.7;color:#e0e9e3}
-.hero-actions{display:flex;justify-content:center;
-gap:12px;flex-wrap:wrap;margin-top:25px}
-.search{background:white;color:var(--text);padding:18px;
-border-radius:14px;margin-top:30px;text-align:left}
-.searchgrid{display:grid;grid-template-columns:1fr 1fr 1fr auto;
-gap:12px;align-items:end}
-label{display:block;font-size:13px;font-weight:bold;margin-bottom:7px}
-input,select,textarea{width:100%;padding:12px;
-border:1px solid var(--line);border-radius:8px;background:white}
-.section{padding:55px 0}
-.heading{text-align:center;margin-bottom:28px}
-.heading h2{color:var(--green);font-size:30px}
-.heading p{color:var(--muted)}
-.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.category{background:white;border:1px solid var(--line);
-border-radius:13px;padding:20px 10px;text-align:center;
-cursor:pointer;transition:.2s}
-.category:hover{border-color:var(--gold);transform:translateY(-3px)}
-.category .emoji{font-size:35px}
-.category h3{font-size:15px;margin-bottom:5px}
-.category p{font-size:12px;color:var(--muted)}
-.card{background:white;border-radius:14px;padding:23px;
-box-shadow:0 8px 25px #173b3210}
-.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-.full{grid-column:1/-1}
-.formgroup label{margin-bottom:7px}
-.preview{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-.preview img{width:90px;height:90px;object-fit:cover;
-border-radius:9px}
-.results{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.item{background:white;border-radius:14px;overflow:hidden;
-box-shadow:0 8px 25px #173b3210}
-.item img{width:100%;height:200px;object-fit:cover}
-.iteminfo{padding:17px}
-.iteminfo h3{color:var(--green);margin:8px 0}
-.iteminfo p{color:var(--muted);font-size:13px;line-height:1.5}
-.price{font-size:23px;font-weight:bold;color:var(--green)}
-.pill{display:inline-block;background:#edf2ed;color:var(--green);
-padding:5px 9px;border-radius:20px;font-size:11px}
-.empty{grid-column:1/-1;text-align:center;background:white;
-padding:30px;border-radius:12px;color:var(--muted)}
-.notice{background:#fff8e9;padding:14px;border-left:4px solid var(--gold);
-font-size:13px;line-height:1.6}
-footer{background:var(--green);color:white;padding:35px 0}
-footer p{color:#d5e0d8;font-size:13px;line-height:1.7}
-.modal{display:none;position:fixed;inset:0;background:#0009;
-z-index:30;align-items:center;justify-content:center;padding:15px}
-.modal.show{display:flex}
-.modalcontent{background:white;border-radius:15px;padding:24px;
-width:min(450px,100%);max-height:90vh;overflow:auto}
-.modalcontent h2{color:var(--green)}
-.hidden{display:none}
-@media(max-width:800px){
-.categories{grid-template-columns:repeat(2,1fr)}
-.results{grid-template-columns:repeat(2,1fr)}
-.searchgrid{grid-template-columns:1fr 1fr}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:var(--cream);
+  color:var(--dark);
 }
-@media(max-width:550px){
-nav{min-height:62px}
-nav .links a{display:none}
-.logo{font-size:19px}
-.hero{padding:45px 0}
-.searchgrid,.formgrid,.results{grid-template-columns:1fr}
-.full{grid-column:auto}
-.section{padding:40px 0}
+header{
+  background:var(--green);
+  color:white;
+  padding:22px 16px;
+  text-align:center;
+}
+header h1{margin:0;font-size:30px}
+header p{margin:8px 0 0}
+nav{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  padding:12px;
+  background:white;
+}
+button{
+  border:0;
+  border-radius:9px;
+  padding:12px 16px;
+  background:var(--green);
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+button:hover{opacity:.9}
+.secondary{background:var(--gold);color:#29251c}
+main{max-width:1000px;margin:auto;padding:18px}
+.hero{
+  background:white;
+  border-radius:15px;
+  padding:25px 18px;
+  text-align:center;
+  margin-bottom:20px;
+}
+.hero h2{font-size:27px;margin:0 0 12px}
+.search{
+  display:grid;
+  grid-template-columns:1fr 1fr auto;
+  gap:8px;
+  margin-top:18px;
+}
+input,select,textarea{
+  width:100%;
+  padding:12px;
+  border:1px solid #d5d5cd;
+  border-radius:8px;
+  font-size:15px;
+  background:white;
+}
+section{margin:25px 0}
+h2.section-title{font-size:22px}
+.categories{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+  gap:10px;
+}
+.category{
+  background:white;
+  padding:17px 8px;
+  border-radius:12px;
+  text-align:center;
+  cursor:pointer;
+  border:1px solid #e8e3d7;
+}
+.category:hover{border-color:var(--gold)}
+.category span{display:block;font-size:25px;margin-bottom:7px}
+.listings{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+}
+.item{
+  background:white;
+  border-radius:13px;
+  overflow:hidden;
+  border:1px solid #e8e3d7;
+}
+.item img{
+  width:100%;
+  height:165px;
+  object-fit:cover;
+  background:#eee;
+}
+.item-content{padding:14px}
+.item h3{margin:0 0 8px}
+.price{font-size:19px;font-weight:bold;color:#607a62}
+.muted{color:#777;font-size:13px}
+.panel{
+  background:white;
+  padding:20px;
+  border-radius:14px;
+  margin:18px 0;
+}
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+label{display:block;font-weight:bold;font-size:14px;margin-bottom:5px}
+.field{margin-bottom:12px}
+.full{grid-column:1/-1}
+.hidden{display:none}
+footer{
+  text-align:center;
+  background:var(--dark);
+  color:white;
+  padding:25px 15px;
+  margin-top:35px;
+}
+@media(max-width:600px){
+  .search,.form-grid{grid-template-columns:1fr}
+  .hero h2{font-size:23px}
 }
 </style>
 </head>
 <body>
 
 <header>
-<div class="container">
-<nav>
-<a href="#" class="logo" style="color:white;text-decoration:none">
-HELP ME <span>RENT</span>
-</a>
-<div class="links">
-<a href="#categorie">Categorie</a>
-<a href="#annunci">Annunci</a>
-<a href="#pubblica">Pubblica</a>
-<button class="btn" onclick="openModal()">Area utenti</button>
-</div>
-</nav>
-</div>
+  <h1>HELP ME RENT</h1>
+  <p>Il marketplace del noleggio</p>
 </header>
 
+<nav>
+  <button onclick="showSection('home')">Home</button>
+  <button onclick="showSection('publish')">Pubblica annuncio</button>
+  <button onclick="showSection('account')">Area utenti</button>
+</nav>
+
 <main>
-<section class="hero">
-<div class="container">
-<div style="color:var(--gold);font-weight:bold;letter-spacing:2px">
-IL MARKETPLACE DEL NOLEGGIO
-</div>
-<h1>Noleggia tutto.<br><span>Condividi di più.</span></h1>
-<p>Hai qualcosa che non utilizzi? Mettilo a noleggio.<br>
-Cerchi qualcosa per un giorno? Trovalo su Help Me Rent.</p>
-<div class="hero-actions">
-<a href="#annunci"><button class="btn">Cerca qualcosa</button></a>
-<a href="#pubblica"><button class="btn btn-outline">Pubblica un annuncio</button></a>
-</div>
+  <div id="home">
+    <div class="hero">
+      <h2>Noleggia tutto, condividi di più</h2>
+      <p>Trova quello che ti serve oppure guadagna noleggiando ciò che possiedi.</p>
+      <div class="search">
+        <input id="searchText" placeholder="Che cosa stai cercando?">
+        <input id="searchCity" placeholder="Città">
+        <button onclick="searchItems()">Cerca</button>
+      </div>
+    </div>
 
-<div class="search">
-<div class="searchgrid">
-<div>
-<label>Cosa cerchi?</label>
-<input id="searchText" placeholder="Es. vestito, trapano, auto">
-</div>
-<div>
-<label>Categoria</label>
-<select id="searchCategory">
-<option value="">Tutte le categorie</option>
-</select>
-</div>
-<div>
-<label>Città</label>
-<input id="searchCity" placeholder="Es. Firenze">
-</div>
-<button class="btn btn-dark" onclick="searchItems()">CERCA</button>
-</div>
-</div>
-</div>
-</section>
+    <section>
+      <h2 class="section-title">Esplora le categorie</h2>
+      <div class="categories" id="categories"></div>
+    </section>
 
-<section class="section" id="categorie">
-<div class="container">
-<div class="heading">
-<h2>Esplora tutte le categorie</h2>
-<p>Un solo posto per trovare quello che ti serve.</p>
-</div>
-<div class="categories" id="categories"></div>
-</div>
-</section>
+    <section>
+      <h2 class="section-title">Annunci disponibili</h2>
+      <div id="listings" class="listings"></div>
+      <p id="emptyMessage" class="muted">Non ci sono ancora annunci. Pubblica il primo!</p>
+    </section>
+  </div>
 
-<section class="section" style="background:white" id="annunci">
-<div class="container">
-<div class="heading">
-<h2>Annunci disponibili</h2>
-<p>Scopri cosa puoi noleggiare.</p>
-</div>
-<div class="results" id="results"></div>
-</div>
-</section>
+  <div id="publish" class="hidden">
+    <div class="panel">
+      <h2>Pubblica il tuo annuncio</h2>
+      <p>Metti a disposizione un oggetto e guadagna con il noleggio.</p>
+      <form id="listingForm">
+        <div class="form-grid">
+          <div class="field">
+            <label for="itemTitle">Nome dell'oggetto</label>
+            <input id="itemTitle" required placeholder="Es. Bicicletta">
+          </div>
+          <div class="field">
+            <label for="itemCategory">Categoria</label>
+            <select id="itemCategory" required></select>
+          </div>
+          <div class="field">
+            <label for="itemCity">Città</label>
+            <input id="itemCity" required placeholder="La tua città">
+          </div>
+          <div class="field">
+            <label for="itemPrice">Prezzo al giorno (€)</label>
+            <input id="itemPrice" type="number" min="1" step="0.01" required>
+          </div>
+          <div class="field full">
+            <label for="itemDescription">Descrizione</label>
+            <textarea id="itemDescription" rows="4" required placeholder="Descrivi il tuo oggetto..."></textarea>
+          </div>
+          <div class="field full">
+            <label for="itemPhoto">Foto dell'oggetto</label>
+            <input id="itemPhoto" type="file" accept="image/*">
+          </div>
+        </div>
+        <button type="submit">Pubblica annuncio</button>
+      </form>
+      <p class="muted">Gli annunci vengono salvati su questo dispositivo in questa versione dimostrativa.</p>
+    </div>
+  </div>
 
-<section class="section" id="pubblica">
-<div class="container">
-<div class="heading">
-<h2>Metti in affitto i tuoi oggetti</h2>
-<p>Pubblica gratuitamente la tua prima anteprima.</p>
-</div>
-<div class="card">
-<form id="listingForm">
-<div class="formgrid">
-<div class="formgroup">
-<label>Nome dell'oggetto *</label>
-<input id="name" required placeholder="Es. Vestito elegante">
-</div>
-<div class="formgroup">
-<label>Categoria *</label>
-<select id="category" required></select>
-</div>
-<div class="formgroup">
-<label>Città *</label>
-<input id="city" required placeholder="La tua città">
-</div>
-<div class="formgroup">
-<label>Prezzo al giorno (€) *</label>
-<input id="price" type="number" min="0.01" step=".01" required>
-</div>
-<div class="formgroup">
-<label>Disponibile dal *</label>
-<input id="dateFrom" type="date" required>
-</div>
-<div class="formgroup">
-<label>Disponibile fino al *</label>
-<input id="dateTo" type="date" required>
-</div>
-<div class="formgroup full">
-<label>Descrizione</label>
-<textarea id="description" rows="4"
-placeholder="Descrivi il tuo oggetto e le sue condizioni..."></textarea>
-</div>
-<div class="formgroup full">
-<label>Fotografie (massimo 5) *</label>
-<input id="photos" type="file" accept="image/*" multiple required>
-<div class="preview" id="preview"></div>
-</div>
-<div class="formgroup full">
-<div class="notice">
-<strong>Commissione Help Me Rent: 20%</strong><br>
-Esempio: su un noleggio di 100 €, la commissione prevista
-è 20 € e al proprietario spettano 80 €, prima di eventuali
-costi di pagamento e imposte. Il calcolo è illustrativo:
-i pagamenti non sono ancora attivi.
-</div>
-</div>
-<div class="formgroup full">
-<label style="font-weight:normal">
-<input type="checkbox" id="accept" required style="width:auto">
-Dichiaro di avere il diritto di pubblicare questo oggetto
-e accetto le condizioni di pubblicazione.
-</label>
-</div>
-<div class="formgroup full">
-<button class="btn btn-dark" style="width:100%" type="submit">
-PUBBLICA ANTEPRIMA
-</button>
-</div>
-</div>
-</form>
-<p id="message"></p>
-</div>
-</div>
-</section>
-
-<section class="section">
-<div class="container">
-<div class="heading">
-<h2>Come funziona</h2>
-</div>
-<div class="categories">
-<div class="card"><h3>1. Registrati</h3>
-<p>Crea il tuo account personale o aziendale.</p></div>
-<div class="card"><h3>2. Pubblica</h3>
-<p>Carica foto, descrizione, prezzo e disponibilità.</p></div>
-<div class="card"><h3>3. Prenota</h3>
-<p>Trova l'oggetto e richiedi il noleggio.</p></div>
-<div class="card"><h3>4. Guadagna</h3>
-<p>Il proprietario riceve il compenso al netto della commissione.</p></div>
-</div>
-</div>
-</section>
+  <div id="account" class="hidden">
+    <div class="panel">
+      <h2>Area utenti</h2>
+      <p>Benvenuto su Help Me Rent!</p>
+      <p>La registrazione, l'accesso e i profili personali saranno attivati collegando Firebase.</p>
+      <p class="muted">Questa versione non gestisce ancora account o prenotazioni reali.</p>
+    </div>
+  </div>
 </main>
 
 <footer>
-<div class="container">
-<div class="logo">HELP ME <span>RENT</span></div>
-<p>Il marketplace italiano del noleggio.</p>
-<p>© 2026 HELP ME RENT</p>
-<p>Prima del lancio saranno attivati account, pagamenti,
-termini di servizio, privacy e assistenza.</p>
-</div>
+  <h2>HELP ME RENT</h2>
+  <p>Noleggiare anziché comprare.</p>
+  <p>© 2026 Help Me Rent</p>
 </footer>
 
-<div class="modal" id="userModal">
-<div class="modalcontent">
-<h2>Area utenti</h2>
-<p>Registrazione e accesso saranno attivati collegando Firebase.</p>
-<label>Nome</label>
-<input placeholder="Il tuo nome">
-<label>Email</label>
-<input type="email" placeholder="La tua email">
-<button class="btn btn-dark" style="width:100%;margin-top:12px"
-onclick="alert('Registrazione online da attivare con Firebase.')">
-Continua
-</button>
-<button class="btn" style="width:100%;margin-top:10px"
-onclick="closeModal()">Chiudi</button>
-</div>
-</div>
-
 <script>
-const categories=[
-["🚗","Auto e veicoli"],
-["👗","Vestiti e accessori"],
-["🔧","Attrezzi e utensili"],
-["🎸","Strumenti musicali"],
-["🎉","Feste e matrimoni"],
-["📱","Elettronica"],
-["🏡","Casa e giardino"],
-["👶","Bambini"],
-["🚲","Biciclette"],
-["🏍️","Moto e scooter"],
-["📷","Fotografia"],
-["⚽","Sport"],
-["🏕️","Campeggio"],
-["🪑","Arredamento"],
-["🎮","Videogiochi"],
-["📦","Altro"]
+const categoryData = [
+  ["🚗","Auto"],
+  ["🏍️","Moto e scooter"],
+  ["🚲","Bici e mobilità"],
+  ["🛠️","Attrezzi e utensili"],
+  ["🎸","Strumenti musicali"],
+  ["🎉","Feste ed eventi"],
+  ["👗","Abbigliamento"],
+  ["📱","Elettronica"],
+  ["🏠","Casa e arredamento"],
+  ["🌳","Giardino"],
+  ["👶","Bambini"],
+  ["📷","Foto e video"],
+  ["🏕️","Sport e campeggio"],
+  ["💻","Informatica"],
+  ["🍽️","Cucina"],
+  ["📦","Altri oggetti"]
 ];
 
-const KEY="helpm rent_marketplace_v1";
-let selectedImages=[];
+let selectedCategory = "";
+let listings = [];
 
-function load(){
-try{return JSON.parse(localStorage.getItem(KEY)||"[]")}
-catch(e){return []}
-}
-function save(items){
-try{
-localStorage.setItem(KEY,JSON.stringify(items));
-return true;
-}catch(e){
-alert("Memoria insufficiente. Riduci il numero o la dimensione delle foto.");
-return false;
-}
+try {
+  listings = JSON.parse(localStorage.getItem("hmr_listings") || "[]");
+  if (!Array.isArray(listings)) listings = [];
+} catch(e) {
+  listings = [];
 }
 
-function initCategories(){
-const box=document.getElementById("categories");
-const select=document.getElementById("category");
-const filter=document.getElementById("searchCategory");
-
-categories.forEach(([emoji,name])=>{
-const div=document.createElement("div");
-div.className="category";
-div.innerHTML=`<div class="emoji">${emoji}</div>
-<h3>${name}</h3><p>Scopri gli annunci</p>`;
-div.onclick=()=>{
-filter.value=name;
-searchItems();
-document.getElementById("annunci").scrollIntoView();
-};
-box.appendChild(div);
-
-select.add(new Option(name,name));
-filter.add(new Option(name,name));
-});
+function showSection(name) {
+  ["home","publish","account"].forEach(id => {
+    document.getElementById(id).classList.toggle("hidden",id !== name);
+  });
+  window.scrollTo(0,0);
 }
 
-function render(items=load()){
-const area=document.getElementById("results");
-if(!items.length){
-area.innerHTML='<div class="empty">Non ci sono ancora annunci. Pubblica il primo!</div>';
-return;
-}
-area.innerHTML="";
-items.forEach(item=>{
-const card=document.createElement("article");
-card.className="item";
+function renderCategories() {
+  const box = document.getElementById("categories");
+  const select = document.getElementById("itemCategory");
+  box.innerHTML = "";
+  select.innerHTML = '<option value="">Scegli categoria</option>';
 
-const img=document.createElement("img");
-img.src=item.photos[0];
-img.alt=item.name;
+  categoryData.forEach(([emoji,name]) => {
+    const card = document.createElement("div");
+    card.className = "category";
+    card.innerHTML = `<span>${emoji}</span><strong>${name}</strong>`;
+    card.onclick = () => {
+      selectedCategory = name;
+      document.getElementById("searchText").value = "";
+      document.getElementById("searchCity").value = "";
+      renderListings(name,"","");
+      document.getElementById("listings").scrollIntoView({behavior:"smooth"});
+    };
+    box.appendChild(card);
 
-const info=document.createElement("div");
-info.className="iteminfo";
-info.innerHTML=`
-<span class="pill">${safe(item.category)}</span>
-<h3>${safe(item.name)}</h3>
-<p>📍 ${safe(item.city)}</p>
-<div class="price">${Number(item.price).toFixed(2)} € <small>/ giorno</small></div>
-<p>${safe(item.description||"Contatta il proprietario per maggiori informazioni.")}</p>
-<p>Disponibilità: ${safe(item.from)} – ${safe(item.to)}</p>
-<button class="btn btn-dark" style="width:100%"
-onclick="booking('${item.id}')">Richiedi prenotazione</button>
-`;
-card.append(img,info);
-area.appendChild(card);
-});
+    const option = document.createElement("option");
+    option.value = name;
+    option.textContent = name;
+    select.appendChild(option);
+  });
 }
 
-function safe(value){
-return String(value).replace(/[&<>"']/g,c=>({
-"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-}[c]));
+function saveListings() {
+  try {
+    localStorage.setItem("hmr_listings",JSON.stringify(listings));
+  } catch(e) {
+    alert("Spazio di salvataggio insufficiente. Prova con una foto più piccola.");
+  }
 }
 
-function searchItems(){
-const text=document.getElementById("searchText").value.toLowerCase();
-const category=document.getElementById("searchCategory").value;
-const city=document.getElementById("searchCity").value.toLowerCase();
+function renderListings(category="",query="",city="") {
+  const box = document.getElementById("listings");
+  box.innerHTML = "";
 
-const filtered=load().filter(item=>
-(!text||(item.name+" "+item.description).toLowerCase().includes(text))&&
-(!category||item.category===category)&&
-(!city||item.city.toLowerCase().includes(city))
-);
-render(filtered);
+  const filtered = listings.filter(item => {
+    const text = (item.title+" "+item.description).toLowerCase();
+    return (!category || item.category === category) &&
+      (!query || text.includes(query.toLowerCase())) &&
+      (!city || item.city.toLowerCase().includes(city.toLowerCase()));
+  });
+
+  document.getElementById("emptyMessage").style.display =
+    filtered.length ? "none" : "block";
+
+  filtered.forEach(item => {
+    const card = document.createElement("article");
+    card.className = "item";
+
+    const img = document.createElement("img");
+    img.alt = item.title;
+    img.src = item.photo || "";
+    if (!item.photo) img.style.display = "none";
+    card.appendChild(img);
+
+    const content = document.createElement("div");
+    content.className = "item-content";
+
+    const title = document.createElement("h3");
+    title.textContent = item.title;
+    const description = document.createElement("p");
+    description.textContent = item.description;
+    const location = document.createElement("p");
+    location.className = "muted";
+    location.textContent = item.category+" · "+item.city;
+    const price = document.createElement("p");
+    price.className = "price";
+    price.textContent = "€"+Number(item.price).toFixed(2)+" / giorno";
+    const note = document.createElement("p");
+    note.className = "muted";
+    note.textContent = "Richiesta di noleggio: contatto non ancora attivo.";
+
+    content.append(title,description,location,price,note);
+    card.appendChild(content);
+    box.appendChild(card);
+  });
 }
 
-document.getElementById("photos").addEventListener("change",async function(){
-const files=Array.from(this.files||[]);
-const preview=document.getElementById("preview");
-preview.innerHTML="";
-selectedImages=[];
-
-if(files.length>5){
-alert("Puoi caricare al massimo 5 fotografie.");
-this.value="";
-return;
+function searchItems() {
+  selectedCategory = "";
+  renderListings(
+    "",
+    document.getElementById("searchText").value.trim(),
+    document.getElementById("searchCity").value.trim()
+  );
 }
 
-for(const file of files){
-if(!file.type.startsWith("image/"))continue;
-if(file.size>1.5*1024*1024){
-alert("Ogni fotografia deve essere inferiore a 1,5 MB.");
-this.value="";
-selectedImages=[];
-preview.innerHTML="";
-return;
-}
-const data=await new Promise(resolve=>{
-const reader=new FileReader();
-reader.onload=e=>resolve(e.target.result);
-reader.readAsDataURL(file);
-});
-selectedImages.push(data);
-const img=document.createElement("img");
-img.src=data;
-preview.appendChild(img);
-}
-});
+document.getElementById("listingForm").addEventListener("submit",async function(e) {
+  e.preventDefault();
 
-document.getElementById("listingForm").addEventListener("submit",function(e){
-e.preventDefault();
+  const file = document.getElementById("itemPhoto").files[0];
+  let photo = "";
 
-const from=document.getElementById("dateFrom").value;
-const to=document.getElementById("dateTo").value;
+  if (file) {
+    if (file.size > 1200000) {
+      alert("La foto è troppo grande. Scegli un'immagine più piccola di 1,2 MB.");
+      return;
+    }
+    photo = await new Promise((resolve,reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
 
-if(!selectedImages.length){
-alert("Carica almeno una fotografia.");
-return;
-}
-if(to<from){
-alert("La data finale deve essere successiva alla data iniziale.");
-return;
-}
+  const item = {
+    id: Date.now(),
+    title: document.getElementById("itemTitle").value.trim(),
+    category: document.getElementById("itemCategory").value,
+    city: document.getElementById("itemCity").value.trim(),
+    price: Number(document.getElementById("itemPrice").value),
+    description: document.getElementById("itemDescription").value.trim(),
+    photo: photo
+  };
 
-const item={
-id:Date.now().toString(),
-name:document.getElementById("name").value.trim(),
-category:document.getElementById("category").value,
-city:document.getElementById("city").value.trim(),
-price:Number(document.getElementById("price").value),
-from,to,
-description:document.getElementById("description").value.trim(),
-photos:selectedImages
-};
-
-const items=load();
-items.unshift(item);
-if(!save(items))return;
-
-this.reset();
-selectedImages=[];
-document.getElementById("preview").innerHTML="";
-document.getElementById("message").textContent=
-"Anteprima salvata su questo dispositivo. Non è ancora pubblicata online.";
-render();
-document.getElementById("annunci").scrollIntoView();
+  listings.unshift(item);
+  saveListings();
+  this.reset();
+  renderListings();
+  showSection("home");
+  alert("Annuncio aggiunto su questo dispositivo!");
 });
 
-function booking(id){
-const item=load().find(x=>x.id===id);
-if(!item)return;
-alert("Hai selezionato: "+item.name+
-"\nPrezzo giornaliero: "+item.price+" €"+
-"\nCommissione prevista Help Me Rent: 20%"+
-"\n\nLe prenotazioni e i pagamenti online saranno attivati con il backend.");
-}
-
-function openModal(){
-document.getElementById("userModal").classList.add("show");
-}
-function closeModal(){
-document.getElementById("userModal").classList.remove("show");
-}
-
-initCategories();
-render();
+renderCategories();
+renderListings();
 </script>
 </body>
 </html>
