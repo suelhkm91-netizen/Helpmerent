@@ -1,763 +1,501 @@
 
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#173b32">
-<meta name="description" content="HELPME RENT: bacheca italiana di annunci di veicoli. Auto, moto, scooter, biciclette e monopattini pubblicati da privati e aziende.">
-<title>HELPME RENT | Annunci di veicoli in Italia</title>
-
+<title>HELP ME RENT - Noleggia tutto</title>
 <style>
 :root{
- --green:#173b32;
- --green2:#285b49;
- --gold:#d8b36b;
- --cream:#f6f5f0;
- --white:#fff;
- --text:#26352e;
- --muted:#78847d;
- --line:#e8eae5;
- --shadow:0 10px 35px rgba(20,50,38,.08);
+--green:#173b32;--green2:#285b49;
+--gold:#d8b36b;--cream:#f6f5f0;
+--white:#fff;--text:#26352e;
+--muted:#78847d;--line:#e8eae5;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
- margin:0;background:var(--cream);color:var(--text);
- font-family:Inter,Arial,sans-serif;
-}
+body{margin:0;background:var(--cream);color:var(--text);
+font-family:Arial,sans-serif}
 button,input,select,textarea{font:inherit}
 button{cursor:pointer}
-a{text-decoration:none;color:inherit}
-img{max-width:100%}
-.container{width:min(1160px,92%);margin:auto}
-header{
- background:var(--green);color:white;
- position:sticky;top:0;z-index:100;
- box-shadow:0 3px 15px #0002;
-}
-.nav{
- min-height:76px;display:flex;align-items:center;
- justify-content:space-between;gap:20px;
-}
-.logo{font-size:25px;font-weight:900;letter-spacing:1px}
+header{background:var(--green);color:white;position:sticky;
+top:0;z-index:10}
+.container{width:min(1150px,92%);margin:auto}
+nav{display:flex;align-items:center;justify-content:space-between;
+min-height:72px;gap:12px}
+.logo{font-size:23px;font-weight:900;letter-spacing:1px}
 .logo span{color:var(--gold)}
-.navlinks{display:flex;gap:24px;align-items:center}
-.navlinks a{font-size:14px;color:#fff}
-.navlinks a:hover{color:var(--gold)}
-.btn{
- display:inline-flex;justify-content:center;align-items:center;
- padding:13px 20px;border:0;border-radius:10px;
- background:var(--gold);color:#23372d;font-weight:800;
- transition:.2s;
-}
-.btn:hover{transform:translateY(-2px);filter:brightness(.96)}
+nav a{color:white;text-decoration:none;font-size:14px}
+nav .links{display:flex;gap:17px;align-items:center}
+.btn{border:0;border-radius:9px;padding:13px 19px;
+background:var(--gold);color:var(--green);font-weight:bold}
 .btn-dark{background:var(--green);color:white}
-.btn-light{background:white;color:var(--green)}
-.btn-outline{background:transparent;border:1px solid #ffffff80;color:white}
-.btn-small{padding:9px 14px;font-size:13px}
-.hero{
- background:linear-gradient(120deg,#15382f,#32684e);
- color:white;padding:75px 0 65px;
-}
-.hero-content{max-width:760px;text-align:center;margin:auto}
-.eyebrow{
- color:var(--gold);font-weight:800;
- text-transform:uppercase;letter-spacing:2px;font-size:12px;
-}
-.hero h1{font-size:clamp(34px,6vw,59px);line-height:1.08;margin:18px 0}
+.btn-outline{background:transparent;color:white;
+border:1px solid #ffffff80}
+.hero{background:linear-gradient(120deg,#15382f,#32684e);
+color:white;padding:65px 0;text-align:center}
+.hero h1{font-size:clamp(34px,6vw,55px);margin:15px 0}
 .hero h1 span{color:var(--gold)}
-.hero p{color:#e0e9e3;line-height:1.7;font-size:17px}
-.hero-actions{
- display:flex;justify-content:center;gap:12px;
- flex-wrap:wrap;margin-top:27px;
-}
-.search-panel{
- background:white;color:var(--text);
- padding:20px;border-radius:16px;margin-top:38px;
- box-shadow:var(--shadow);
-}
-.search-grid{
- display:grid;grid-template-columns:1.2fr 1.2fr .8fr auto;
- gap:12px;align-items:end;
-}
-.field label{display:block;font-size:12px;font-weight:800;margin-bottom:7px}
-.field input,.field select,.field textarea{
- width:100%;border:1px solid var(--line);
- padding:13px;border-radius:9px;background:white;
- color:var(--text);outline:none;min-width:0;
-}
-.field input:focus,.field select:focus,.field textarea:focus{
- border-color:var(--green2);
- box-shadow:0 0 0 3px #285b4915;
-}
-section{scroll-margin-top:90px}
-.section{padding:65px 0}
-.section-head{text-align:center;margin-bottom:32px}
-.section-head h2{font-size:clamp(25px,4vw,34px);margin:0 0 10px;color:var(--green)}
-.section-head p{color:var(--muted);line-height:1.6;margin:0}
-.grid{
- display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:17px;
-}
-.category{
- background:white;border:1px solid var(--line);border-radius:15px;
- padding:25px 15px;text-align:center;cursor:pointer;
- transition:.2s;
-}
-.category:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:var(--shadow)}
-.category-icon{font-size:39px}
-.category h3{font-size:16px;margin:12px 0 5px}
-.category p{font-size:13px;color:var(--muted);margin:0}
-.steps{
- display:grid;grid-template-columns:repeat(3,1fr);gap:17px;
-}
-.step{background:white;border-radius:15px;padding:25px;box-shadow:var(--shadow)}
-.step-number{
- width:37px;height:37px;border-radius:50%;display:grid;
- place-items:center;background:#eaf0e9;color:var(--green);font-weight:900;
-}
-.step h3{color:var(--green)}
-.step p{font-size:14px;color:var(--muted);line-height:1.6}
-.pricing{
- display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
-}
-.price-card{
- background:white;padding:28px;border-radius:17px;
- border:1px solid var(--line);position:relative;
-}
-.price-card.featured{border:2px solid var(--gold)}
-.price-card h3{color:var(--green)}
-.price{font-size:38px;font-weight:900;color:var(--green);margin:18px 0}
-.price small{font-size:14px;color:var(--muted);font-weight:500}
-.price-card ul{padding-left:19px;color:var(--muted);line-height:2}
-.price-card .btn{width:100%;margin-top:10px}
-.tag{
- display:inline-block;padding:6px 10px;border-radius:20px;
- background:#f7eedb;color:#80622e;font-size:11px;font-weight:900;
-}
-.card{
- background:white;border-radius:16px;padding:24px;
- box-shadow:var(--shadow);
-}
-.form-layout{
- display:grid;grid-template-columns:1fr 1fr;gap:15px;
-}
+.hero p{line-height:1.7;color:#e0e9e3}
+.hero-actions{display:flex;justify-content:center;
+gap:12px;flex-wrap:wrap;margin-top:25px}
+.search{background:white;color:var(--text);padding:18px;
+border-radius:14px;margin-top:30px;text-align:left}
+.searchgrid{display:grid;grid-template-columns:1fr 1fr 1fr auto;
+gap:12px;align-items:end}
+label{display:block;font-size:13px;font-weight:bold;margin-bottom:7px}
+input,select,textarea{width:100%;padding:12px;
+border:1px solid var(--line);border-radius:8px;background:white}
+.section{padding:55px 0}
+.heading{text-align:center;margin-bottom:28px}
+.heading h2{color:var(--green);font-size:30px}
+.heading p{color:var(--muted)}
+.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.category{background:white;border:1px solid var(--line);
+border-radius:13px;padding:20px 10px;text-align:center;
+cursor:pointer;transition:.2s}
+.category:hover{border-color:var(--gold);transform:translateY(-3px)}
+.category .emoji{font-size:35px}
+.category h3{font-size:15px;margin-bottom:5px}
+.category p{font-size:12px;color:var(--muted)}
+.card{background:white;border-radius:14px;padding:23px;
+box-shadow:0 8px 25px #173b3210}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
 .full{grid-column:1/-1}
-.form-group label{display:block;font-weight:800;font-size:13px;margin-bottom:7px}
-.form-group input,.form-group select,.form-group textarea{
- width:100%;padding:13px;border:1px solid var(--line);
- border-radius:9px;background:white;
+.formgroup label{margin-bottom:7px}
+.preview{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.preview img{width:90px;height:90px;object-fit:cover;
+border-radius:9px}
+.results{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.item{background:white;border-radius:14px;overflow:hidden;
+box-shadow:0 8px 25px #173b3210}
+.item img{width:100%;height:200px;object-fit:cover}
+.iteminfo{padding:17px}
+.iteminfo h3{color:var(--green);margin:8px 0}
+.iteminfo p{color:var(--muted);font-size:13px;line-height:1.5}
+.price{font-size:23px;font-weight:bold;color:var(--green)}
+.pill{display:inline-block;background:#edf2ed;color:var(--green);
+padding:5px 9px;border-radius:20px;font-size:11px}
+.empty{grid-column:1/-1;text-align:center;background:white;
+padding:30px;border-radius:12px;color:var(--muted)}
+.notice{background:#fff8e9;padding:14px;border-left:4px solid var(--gold);
+font-size:13px;line-height:1.6}
+footer{background:var(--green);color:white;padding:35px 0}
+footer p{color:#d5e0d8;font-size:13px;line-height:1.7}
+.modal{display:none;position:fixed;inset:0;background:#0009;
+z-index:30;align-items:center;justify-content:center;padding:15px}
+.modal.show{display:flex}
+.modalcontent{background:white;border-radius:15px;padding:24px;
+width:min(450px,100%);max-height:90vh;overflow:auto}
+.modalcontent h2{color:var(--green)}
+.hidden{display:none}
+@media(max-width:800px){
+.categories{grid-template-columns:repeat(2,1fr)}
+.results{grid-template-columns:repeat(2,1fr)}
+.searchgrid{grid-template-columns:1fr 1fr}
 }
-.form-group textarea{min-height:100px;resize:vertical}
-.upload{
- border:2px dashed #c8d5ca;border-radius:13px;
- padding:24px;text-align:center;background:#fafbf8;
-}
-.upload input{width:100%;margin-top:14px}
-.preview{
- display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));
- gap:10px;margin-top:15px;
-}
-.preview img{height:90px;width:100%;object-fit:cover;border-radius:9px}
-.notice{
- padding:15px;background:#fff8e9;border-left:4px solid var(--gold);
- border-radius:8px;font-size:13px;line-height:1.6;color:#635537;
-}
-.results{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
-.vehicle-card{
- background:white;border-radius:15px;overflow:hidden;
- box-shadow:var(--shadow);
-}
-.vehicle-image{
- height:190px;background:#e8eee8;
- display:grid;place-items:center;font-size:55px;
-}
-.vehicle-image img{width:100%;height:100%;object-fit:cover}
-.vehicle-info{padding:17px}
-.vehicle-info h3{margin:0 0 8px;color:var(--green)}
-.vehicle-info p{font-size:13px;color:var(--muted);line-height:1.5}
-.vehicle-price{font-size:20px;font-weight:900;color:var(--green)}
-.vehicle-price small{font-size:12px;font-weight:500;color:var(--muted)}
-.pill{
- display:inline-block;background:#edf2ed;color:var(--green);
- border-radius:20px;padding:5px 9px;font-size:11px;font-weight:800;
-}
-.empty{
- background:white;border-radius:14px;padding:28px;
- text-align:center;color:var(--muted);
- grid-column:1/-1;
-}
-.modal-bg{
- position:fixed;inset:0;background:#0008;z-index:300;
- display:none;align-items:center;justify-content:center;padding:15px;
-}
-.modal-bg.show{display:flex}
-.modal{
- width:min(450px,100%);background:white;border-radius:17px;
- padding:26px;max-height:90vh;overflow:auto;
-}
-.modal h2{color:var(--green);margin-top:0}
-.modal input{
- width:100%;padding:13px;border:1px solid var(--line);
- border-radius:9px;margin:7px 0 14px;
-}
-.modal-actions{display:flex;gap:10px;flex-wrap:wrap}
-footer{background:var(--green);color:white;padding:38px 0}
-.footer-content{
- display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap;
-}
-footer p{font-size:13px;color:#d5e0d8;line-height:1.7}
-footer a{color:var(--gold)}
-footer .logo{margin-bottom:10px}
-#toast{
- position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
- background:#173b32;color:white;padding:14px 20px;
- border-radius:10px;z-index:500;display:none;
- width:max-content;max-width:90%;
-}
-.hidden{display:none!important}
-@media(max-width:850px){
- .grid{grid-template-columns:repeat(2,1fr)}
- .search-grid{grid-template-columns:1fr 1fr}
- .pricing,.results{grid-template-columns:1fr 1fr}
-}
-@media(max-width:600px){
- .nav{min-height:65px}
- .logo{font-size:21px}
- .navlinks{gap:10px}
- .navlinks a{font-size:11px}
- .navlinks .desktop-only{display:none}
- .hero{padding:53px 0 45px}
- .hero p{font-size:15px}
- .section{padding:45px 0}
- .grid{gap:10px}
- .category{padding:19px 8px}
- .category-icon{font-size:32px}
- .steps,.pricing,.results{grid-template-columns:1fr}
- .search-grid{grid-template-columns:1fr}
- .form-layout{grid-template-columns:1fr}
- .full{grid-column:auto}
- .vehicle-image{height:210px}
+@media(max-width:550px){
+nav{min-height:62px}
+nav .links a{display:none}
+.logo{font-size:19px}
+.hero{padding:45px 0}
+.searchgrid,.formgrid,.results{grid-template-columns:1fr}
+.full{grid-column:auto}
+.section{padding:40px 0}
 }
 </style>
 </head>
-
 <body>
 
 <header>
- <div class="container nav">
-  <a class="logo" href="#">HELPME <span>RENT</span></a>
-  <nav class="navlinks">
-   <a href="#cerca">Cerca</a>
-   <a href="#prezzi">Prezzi</a>
-   <a href="#pubblica">Pubblica</a>
-   <a href="#" onclick="openLogin();return false" class="desktop-only">Accedi</a>
-   <button class="btn btn-small" onclick="openLogin()">Area utenti</button>
-  </nav>
- </div>
+<div class="container">
+<nav>
+<a href="#" class="logo" style="color:white;text-decoration:none">
+HELP ME <span>RENT</span>
+</a>
+<div class="links">
+<a href="#categorie">Categorie</a>
+<a href="#annunci">Annunci</a>
+<a href="#pubblica">Pubblica</a>
+<button class="btn" onclick="openModal()">Area utenti</button>
+</div>
+</nav>
+</div>
 </header>
 
 <main>
-
 <section class="hero">
- <div class="container hero-content">
-  <div class="eyebrow">La bacheca italiana dei veicoli</div>
-  <h1>Il tuo prossimo viaggio inizia con <span>HELPME RENT</span></h1>
-  <p>Un portale di annunci dove privati e aziende possono pubblicare e cercare veicoli in tutta Italia. Auto, moto, biciclette e molto altro.</p>
-  <div class="hero-actions">
-   <a href="#cerca" class="btn">Cerca un veicolo</a>
-   <a href="#pubblica" class="btn btn-outline">Pubblica un annuncio</a>
-  </div>
+<div class="container">
+<div style="color:var(--gold);font-weight:bold;letter-spacing:2px">
+IL MARKETPLACE DEL NOLEGGIO
+</div>
+<h1>Noleggia tutto.<br><span>Condividi di più.</span></h1>
+<p>Hai qualcosa che non utilizzi? Mettilo a noleggio.<br>
+Cerchi qualcosa per un giorno? Trovalo su Help Me Rent.</p>
+<div class="hero-actions">
+<a href="#annunci"><button class="btn">Cerca qualcosa</button></a>
+<a href="#pubblica"><button class="btn btn-outline">Pubblica un annuncio</button></a>
+</div>
 
-  <div class="search-panel" id="cerca">
-   <div class="search-grid">
-    <div class="field">
-     <label>Che cosa cerchi?</label>
-     <select id="filterType">
-      <option value="">Tutti i veicoli</option>
-      <option>Automobile</option>
-      <option>Moto e scooter</option>
-      <option>Bicicletta</option>
-      <option>Monopattino</option>
-      <option>Altro</option>
-     </select>
-    </div>
-    <div class="field">
-     <label>Dove?</label>
-     <input id="filterCity" placeholder="Città o provincia">
-    </div>
-    <div class="field">
-     <label>Inserzionista</label>
-     <select id="filterProfile">
-      <option value="">Tutti</option>
-      <option>Privato</option>
-      <option>Azienda</option>
-     </select>
-    </div>
-    <button class="btn btn-dark" onclick="searchVehicles()">Cerca</button>
-   </div>
-  </div>
- </div>
+<div class="search">
+<div class="searchgrid">
+<div>
+<label>Cosa cerchi?</label>
+<input id="searchText" placeholder="Es. vestito, trapano, auto">
+</div>
+<div>
+<label>Categoria</label>
+<select id="searchCategory">
+<option value="">Tutte le categorie</option>
+</select>
+</div>
+<div>
+<label>Città</label>
+<input id="searchCity" placeholder="Es. Firenze">
+</div>
+<button class="btn btn-dark" onclick="searchItems()">CERCA</button>
+</div>
+</div>
+</div>
 </section>
 
-<section class="section">
- <div class="container">
-  <div class="section-head">
-   <h2>Esplora le categorie</h2>
-   <p>Trova il veicolo che stai cercando.</p>
-  </div>
-  <div class="grid">
-   <div class="category" onclick="chooseCategory('Automobile')">
-    <div class="category-icon">🚗</div>
-    <h3>Automobili</h3><p>Auto di privati e aziende</p>
-   </div>
-   <div class="category" onclick="chooseCategory('Moto e scooter')">
-    <div class="category-icon">🏍️</div>
-    <h3>Moto e scooter</h3><p>Due ruote per ogni esigenza</p>
-   </div>
-   <div class="category" onclick="chooseCategory('Bicicletta')">
-    <div class="category-icon">🚲</div>
-    <h3>Biciclette</h3><p>Bici tradizionali ed elettriche</p>
-   </div>
-   <div class="category" onclick="chooseCategory('Monopattino')">
-    <div class="category-icon">🛴</div>
-    <h3>Monopattini</h3><p>Mobilità urbana</p>
-   </div>
-  </div>
- </div>
+<section class="section" id="categorie">
+<div class="container">
+<div class="heading">
+<h2>Esplora tutte le categorie</h2>
+<p>Un solo posto per trovare quello che ti serve.</p>
+</div>
+<div class="categories" id="categories"></div>
+</div>
 </section>
 
-<section class="section" style="background:#fff">
- <div class="container">
-  <div class="section-head">
-   <h2>Come funziona</h2>
-   <p>Un punto d'incontro semplice tra chi pubblica e chi cerca.</p>
-  </div>
-  <div class="steps">
-   <div class="step">
-    <div class="step-number">1</div>
-    <h3>Registrati</h3>
-    <p>Scegli se sei un privato oppure un'azienda e crea il tuo profilo.</p>
-   </div>
-   <div class="step">
-    <div class="step-number">2</div>
-    <h3>Pubblica o cerca</h3>
-    <p>Inserisci fotografie, descrizione, città e prezzo richiesto oppure cerca tra gli annunci.</p>
-   </div>
-   <div class="step">
-    <div class="step-number">3</div>
-    <h3>Contatta direttamente</h3>
-    <p>Le parti interessate si accordano direttamente tra loro per il noleggio.</p>
-   </div>
-  </div>
- </div>
-</section>
-
-<section class="section" id="prezzi">
- <div class="container">
-  <div class="section-head">
-   <h2>I nostri piani pubblicitari</h2>
-   <p>Scegli il piano più adatto alle tue pubblicazioni.</p>
-  </div>
-  <div class="pricing">
-   <div class="price-card">
-    <span class="tag">PRIVATI E SINGOLI ANNUNCI</span>
-    <h3>Annuncio singolo</h3>
-    <div class="price">5 € <small>/ 5 giorni</small></div>
-    <ul>
-     <li>1 veicolo</li>
-     <li>Fotografie</li>
-     <li>Descrizione e prezzo</li>
-     <li>Visibilità per 5 giorni</li>
-    </ul>
-    <button class="btn btn-dark" onclick="choosePlan('singolo')">Scegli questo piano</button>
-   </div>
-   <div class="price-card featured">
-    <span class="tag">PIANO AZIENDA</span>
-    <h3>Business</h3>
-    <div class="price">15 € <small>/ mese</small></div>
-    <ul>
-     <li>Fino a 5 veicoli</li>
-     <li>Gestione degli annunci</li>
-     <li>Fotografie e descrizioni</li>
-     <li>Abbonamento mensile</li>
-    </ul>
-    <button class="btn" onclick="choosePlan('business')">Scegli questo piano</button>
-   </div>
-   <div class="price-card">
-    <span class="tag">PIANO PREMIUM</span>
-    <h3>Business Unlimited</h3>
-    <div class="price">50 € <small>/ mese</small></div>
-    <ul>
-     <li>Veicoli illimitati</li>
-     <li>Gestione degli annunci</li>
-     <li>Fotografie e descrizioni</li>
-     <li>Abbonamento mensile</li>
-    </ul>
-    <button class="btn btn-dark" onclick="choosePlan('premium')">Scegli questo piano</button>
-   </div>
-  </div>
-  <p style="text-align:center;color:var(--muted);font-size:12px;margin-top:20px">
-   I prezzi indicati sono i piani pubblicitari proposti per la piattaforma.
-  </p>
- </div>
+<section class="section" style="background:white" id="annunci">
+<div class="container">
+<div class="heading">
+<h2>Annunci disponibili</h2>
+<p>Scopri cosa puoi noleggiare.</p>
+</div>
+<div class="results" id="results"></div>
+</div>
 </section>
 
 <section class="section" id="pubblica">
- <div class="container">
-  <div class="section-head">
-   <h2>Pubblica il tuo veicolo</h2>
-   <p>Sei un privato o rappresenti un'azienda? Inizia da qui.</p>
-  </div>
-
-  <div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr))">
-   <div class="card">
-    <div style="font-size:34px">👤</div>
-    <h3>Privato</h3>
-    <p style="color:var(--muted);font-size:14px">Vuoi pubblicare il tuo veicolo?</p>
-    <button class="btn btn-dark" onclick="startPublishing('Privato')">Continua come privato</button>
-   </div>
-   <div class="card">
-    <div style="font-size:34px">🏢</div>
-    <h3>Azienda</h3>
-    <p style="color:var(--muted);font-size:14px">Hai una concessionaria o un'attività?</p>
-    <button class="btn btn-dark" onclick="startPublishing('Azienda')">Continua come azienda</button>
-   </div>
-  </div>
-
-  <div class="card hidden" id="publicationCard" style="margin-top:22px">
-   <h3 id="publicationTitle">Nuovo annuncio</h3>
-   <p id="publicationDescription" style="color:var(--muted);font-size:14px"></p>
-
-   <form id="vehicleForm">
-    <input type="hidden" id="profileType">
-
-    <div class="form-layout">
-     <div class="form-group">
-      <label>Categoria del veicolo *</label>
-      <select id="vehicleType" required>
-       <option value="">Seleziona</option>
-       <option>Automobile</option>
-       <option>Moto e scooter</option>
-       <option>Bicicletta</option>
-       <option>Monopattino</option>
-       <option>Altro</option>
-      </select>
-     </div>
-     <div class="form-group">
-      <label>Marca *</label>
-      <input id="vehicleBrand" placeholder="Es. Fiat" required>
-     </div>
-     <div class="form-group">
-      <label>Modello *</label>
-      <input id="vehicleModel" placeholder="Es. Panda" required>
-     </div>
-     <div class="form-group">
-      <label>Città *</label>
-      <input id="vehicleCity" placeholder="Es. Firenze" required>
-     </div>
-     <div class="form-group">
-      <label>Prezzo richiesto al giorno (€) *</label>
-      <input id="vehiclePrice" type="number" min="0" step="0.01" placeholder="35" required>
-     </div>
-     <div class="form-group">
-      <label>Contatto email *</label>
-      <input id="vehicleEmail" type="email" placeholder="nome@email.it" required>
-     </div>
-     <div class="form-group full">
-      <label>Descrizione del veicolo</label>
-      <textarea id="vehicleDescription" placeholder="Descrivi il veicolo, le sue caratteristiche e le condizioni offerte..."></textarea>
-     </div>
-     <div class="form-group full">
-      <label>Fotografie del veicolo *</label>
-      <div class="upload">
-       <div style="font-size:30px">📸</div>
-       <p>Seleziona le fotografie dalla galleria del telefono.</p>
-       <input type="file" id="vehiclePhotos" accept="image/*" multiple required>
-       <div class="preview" id="photoPreview"></div>
-      </div>
-     </div>
-     <div class="form-group full">
-      <div class="notice">
-       <strong>Dichiarazione dell'inserzionista</strong><br>
-       Il proprietario dichiara di avere titolo e autorizzazioni per pubblicare l'annuncio e di verificare, sotto la propria responsabilità, la conformità del veicolo alle norme applicabili, comprese assicurazione, documenti e requisiti per l'eventuale noleggio. La pubblicazione non costituisce verifica o certificazione da parte di HELPME RENT.
-      </div>
-     </div>
-     <div class="form-group full">
-      <label style="font-weight:500">
-       <input type="checkbox" id="acceptDeclaration" required style="width:auto">
-       Dichiaro che le informazioni sono corrette e che ho letto e accetto le condizioni di pubblicazione.
-      </label>
-     </div>
-     <div class="form-group full">
-      <button class="btn btn-dark" type="submit" style="width:100%">Salva annuncio in anteprima</button>
-     </div>
-    </div>
-   </form>
-   <p id="publicationMessage" style="font-size:14px"></p>
-  </div>
- </div>
-</section>
-
-<section class="section" id="annunci" style="background:white">
- <div class="container">
-  <div class="section-head">
-   <h2>Annunci disponibili</h2>
-   <p>Gli annunci salvati in questa anteprima appariranno qui.</p>
-  </div>
-  <div class="results" id="vehicleResults">
-   <div class="empty">Non ci sono ancora annunci in questa anteprima. Sii il primo a pubblicare!</div>
-  </div>
- </div>
+<div class="container">
+<div class="heading">
+<h2>Metti in affitto i tuoi oggetti</h2>
+<p>Pubblica gratuitamente la tua prima anteprima.</p>
+</div>
+<div class="card">
+<form id="listingForm">
+<div class="formgrid">
+<div class="formgroup">
+<label>Nome dell'oggetto *</label>
+<input id="name" required placeholder="Es. Vestito elegante">
+</div>
+<div class="formgroup">
+<label>Categoria *</label>
+<select id="category" required></select>
+</div>
+<div class="formgroup">
+<label>Città *</label>
+<input id="city" required placeholder="La tua città">
+</div>
+<div class="formgroup">
+<label>Prezzo al giorno (€) *</label>
+<input id="price" type="number" min="0.01" step=".01" required>
+</div>
+<div class="formgroup">
+<label>Disponibile dal *</label>
+<input id="dateFrom" type="date" required>
+</div>
+<div class="formgroup">
+<label>Disponibile fino al *</label>
+<input id="dateTo" type="date" required>
+</div>
+<div class="formgroup full">
+<label>Descrizione</label>
+<textarea id="description" rows="4"
+placeholder="Descrivi il tuo oggetto e le sue condizioni..."></textarea>
+</div>
+<div class="formgroup full">
+<label>Fotografie (massimo 5) *</label>
+<input id="photos" type="file" accept="image/*" multiple required>
+<div class="preview" id="preview"></div>
+</div>
+<div class="formgroup full">
+<div class="notice">
+<strong>Commissione Help Me Rent: 20%</strong><br>
+Esempio: su un noleggio di 100 €, la commissione prevista
+è 20 € e al proprietario spettano 80 €, prima di eventuali
+costi di pagamento e imposte. Il calcolo è illustrativo:
+i pagamenti non sono ancora attivi.
+</div>
+</div>
+<div class="formgroup full">
+<label style="font-weight:normal">
+<input type="checkbox" id="accept" required style="width:auto">
+Dichiaro di avere il diritto di pubblicare questo oggetto
+e accetto le condizioni di pubblicazione.
+</label>
+</div>
+<div class="formgroup full">
+<button class="btn btn-dark" style="width:100%" type="submit">
+PUBBLICA ANTEPRIMA
+</button>
+</div>
+</div>
+</form>
+<p id="message"></p>
+</div>
+</div>
 </section>
 
 <section class="section">
- <div class="container">
-  <div class="section-head">
-   <h2>Il nostro impegno</h2>
-   <p>Una bacheca di annunci, non un servizio di autonoleggio.</p>
-  </div>
-  <div class="card">
-   <p style="line-height:1.8;color:var(--muted)">
-    HELPME RENT offre uno spazio online per la pubblicazione e la consultazione di annunci di veicoli. Gli inserzionisti e gli interessati possono contattarsi direttamente e concordare autonomamente eventuali condizioni di noleggio. HELPME RENT non incassa il prezzo del noleggio e non applica commissioni sulle somme concordate tra le parti. Restano da definire e verificare gli obblighi legali e contrattuali applicabili alla piattaforma e agli inserzionisti.
-   </p>
-  </div>
- </div>
+<div class="container">
+<div class="heading">
+<h2>Come funziona</h2>
+</div>
+<div class="categories">
+<div class="card"><h3>1. Registrati</h3>
+<p>Crea il tuo account personale o aziendale.</p></div>
+<div class="card"><h3>2. Pubblica</h3>
+<p>Carica foto, descrizione, prezzo e disponibilità.</p></div>
+<div class="card"><h3>3. Prenota</h3>
+<p>Trova l'oggetto e richiedi il noleggio.</p></div>
+<div class="card"><h3>4. Guadagna</h3>
+<p>Il proprietario riceve il compenso al netto della commissione.</p></div>
+</div>
+</div>
 </section>
-
 </main>
 
 <footer>
- <div class="container footer-content">
-  <div>
-   <div class="logo">HELPME <span>RENT</span></div>
-   <p>La bacheca italiana degli annunci di veicoli.</p>
-  </div>
-  <div>
-   <strong>Informazioni</strong>
-   <p><a href="#prezzi">Piani pubblicitari</a></p>
-   <p><a href="#pubblica">Pubblica un annuncio</a></p>
-   <p><a href="#annunci">Cerca veicoli</a></p>
-  </div>
-  <div>
-   <strong>Assistenza</strong>
-   <p>Contatti e condizioni saranno aggiunti prima del lancio.</p>
-   <p>© 2026 HELPME RENT</p>
-  </div>
- </div>
+<div class="container">
+<div class="logo">HELP ME <span>RENT</span></div>
+<p>Il marketplace italiano del noleggio.</p>
+<p>© 2026 HELP ME RENT</p>
+<p>Prima del lancio saranno attivati account, pagamenti,
+termini di servizio, privacy e assistenza.</p>
+</div>
 </footer>
 
-<div class="modal-bg" id="loginModal">
- <div class="modal">
-  <h2>Area utenti</h2>
-  <p style="color:var(--muted);font-size:13px">La registrazione reale sarà collegata a Firebase nella prossima fase.</p>
-  <label>Nome</label>
-  <input id="accountName" placeholder="Il tuo nome">
-  <label>Email</label>
-  <input id="accountEmail" type="email" placeholder="La tua email">
-  <label>Tipo di account</label>
-  <select id="accountType" style="width:100%;padding:13px;border:1px solid var(--line);border-radius:9px;margin:7px 0 15px">
-   <option>Privato</option>
-   <option>Azienda</option>
-  </select>
-  <div class="modal-actions">
-   <button class="btn btn-dark" onclick="demoAccount()">Continua</button>
-   <button class="btn" onclick="closeLogin()">Chiudi</button>
-  </div>
- </div>
+<div class="modal" id="userModal">
+<div class="modalcontent">
+<h2>Area utenti</h2>
+<p>Registrazione e accesso saranno attivati collegando Firebase.</p>
+<label>Nome</label>
+<input placeholder="Il tuo nome">
+<label>Email</label>
+<input type="email" placeholder="La tua email">
+<button class="btn btn-dark" style="width:100%;margin-top:12px"
+onclick="alert('Registrazione online da attivare con Firebase.')">
+Continua
+</button>
+<button class="btn" style="width:100%;margin-top:10px"
+onclick="closeModal()">Chiudi</button>
+</div>
 </div>
 
-<div id="toast"></div>
-
 <script>
-const STORAGE_KEY = "helpmе_rent_preview_v1";
-let currentPlan = "";
-let selectedPhotos = [];
+const categories=[
+["🚗","Auto e veicoli"],
+["👗","Vestiti e accessori"],
+["🔧","Attrezzi e utensili"],
+["🎸","Strumenti musicali"],
+["🎉","Feste e matrimoni"],
+["📱","Elettronica"],
+["🏡","Casa e giardino"],
+["👶","Bambini"],
+["🚲","Biciclette"],
+["🏍️","Moto e scooter"],
+["📷","Fotografia"],
+["⚽","Sport"],
+["🏕️","Campeggio"],
+["🪑","Arredamento"],
+["🎮","Videogiochi"],
+["📦","Altro"]
+];
 
-function toast(message){
- const t=document.getElementById("toast");
- t.textContent=message;
- t.style.display="block";
- clearTimeout(window.toastTimer);
- window.toastTimer=setTimeout(()=>t.style.display="none",3500);
+const KEY="helpm rent_marketplace_v1";
+let selectedImages=[];
+
+function load(){
+try{return JSON.parse(localStorage.getItem(KEY)||"[]")}
+catch(e){return []}
+}
+function save(items){
+try{
+localStorage.setItem(KEY,JSON.stringify(items));
+return true;
+}catch(e){
+alert("Memoria insufficiente. Riduci il numero o la dimensione delle foto.");
+return false;
+}
 }
 
-function getVehicles(){
- try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]")}
- catch(e){return []}
+function initCategories(){
+const box=document.getElementById("categories");
+const select=document.getElementById("category");
+const filter=document.getElementById("searchCategory");
+
+categories.forEach(([emoji,name])=>{
+const div=document.createElement("div");
+div.className="category";
+div.innerHTML=`<div class="emoji">${emoji}</div>
+<h3>${name}</h3><p>Scopri gli annunci</p>`;
+div.onclick=()=>{
+filter.value=name;
+searchItems();
+document.getElementById("annunci").scrollIntoView();
+};
+box.appendChild(div);
+
+select.add(new Option(name,name));
+filter.add(new Option(name,name));
+});
 }
 
-function saveVehicles(data){
- try{
-  localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
-  return true;
- }catch(e){
-  toast("Spazio di archiviazione insufficiente. Prova con meno fotografie.");
-  return false;
- }
+function render(items=load()){
+const area=document.getElementById("results");
+if(!items.length){
+area.innerHTML='<div class="empty">Non ci sono ancora annunci. Pubblica il primo!</div>';
+return;
+}
+area.innerHTML="";
+items.forEach(item=>{
+const card=document.createElement("article");
+card.className="item";
+
+const img=document.createElement("img");
+img.src=item.photos[0];
+img.alt=item.name;
+
+const info=document.createElement("div");
+info.className="iteminfo";
+info.innerHTML=`
+<span class="pill">${safe(item.category)}</span>
+<h3>${safe(item.name)}</h3>
+<p>📍 ${safe(item.city)}</p>
+<div class="price">${Number(item.price).toFixed(2)} € <small>/ giorno</small></div>
+<p>${safe(item.description||"Contatta il proprietario per maggiori informazioni.")}</p>
+<p>Disponibilità: ${safe(item.from)} – ${safe(item.to)}</p>
+<button class="btn btn-dark" style="width:100%"
+onclick="booking('${item.id}')">Richiedi prenotazione</button>
+`;
+card.append(img,info);
+area.appendChild(card);
+});
 }
 
-function chooseCategory(type){
- document.getElementById("filterType").value=type;
- document.getElementById("cerca").scrollIntoView({behavior:"smooth"});
- searchVehicles();
+function safe(value){
+return String(value).replace(/[&<>"']/g,c=>({
+"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+}[c]));
 }
 
-function searchVehicles(){
- const type=document.getElementById("filterType").value.toLowerCase();
- const city=document.getElementById("filterCity").value.trim().toLowerCase();
- const profile=document.getElementById("filterProfile").value.toLowerCase();
+function searchItems(){
+const text=document.getElementById("searchText").value.toLowerCase();
+const category=document.getElementById("searchCategory").value;
+const city=document.getElementById("searchCity").value.toLowerCase();
 
- const filtered=getVehicles().filter(v=>
-  (!type||v.type.toLowerCase()===type)&&
-  (!city||v.city.toLowerCase().includes(city))&&
-  (!profile||v.profile.toLowerCase()===profile)
- );
- renderVehicles(filtered);
- document.getElementById("annunci").scrollIntoView({behavior:"smooth"});
+const filtered=load().filter(item=>
+(!text||(item.name+" "+item.description).toLowerCase().includes(text))&&
+(!category||item.category===category)&&
+(!city||item.city.toLowerCase().includes(city))
+);
+render(filtered);
 }
 
-function renderVehicles(items=getVehicles()){
- const area=document.getElementById("vehicleResults");
- if(!items.length){
-  area.innerHTML='<div class="empty">Nessun annuncio trovato. Prova un\'altra ricerca oppure pubblica il primo annuncio.</div>';
-  return;
- }
- area.innerHTML=items.map(v=>{
-  const picture=v.photos&&v.photos.length?
-   '<img src="'+v.photos[0]+'" alt="Fotografia del veicolo">':
-   '<div class="vehicle-image">🚘</div>';
-  return `
-   <article class="vehicle-card">
-    <div class="vehicle-image">${v.photos&&v.photos.length?picture:'🚘'}</div>
-    <div class="vehicle-info">
-     <span class="pill">${escapeHTML(v.profile)}</span>
-     <h3>${escapeHTML(v.brand)} ${escapeHTML(v.model)}</h3>
-     <p>${escapeHTML(v.type)} · ${escapeHTML(v.city)}</p>
-     <div class="vehicle-price">${Number(v.price).toFixed(2)} € <small>/ giorno</small></div>
-     <p>${escapeHTML(v.description||"Contatta l'inserzionista per maggiori informazioni.")}</p>
-     <a class="btn btn-dark" style="width:100%" href="mailto:${encodeURIComponent(v.email)}?subject=${encodeURIComponent("Informazioni annuncio HELPME RENT")}">Contatta inserzionista</a>
-    </div>
-   </article>`;
- }).join("");
+document.getElementById("photos").addEventListener("change",async function(){
+const files=Array.from(this.files||[]);
+const preview=document.getElementById("preview");
+preview.innerHTML="";
+selectedImages=[];
+
+if(files.length>5){
+alert("Puoi caricare al massimo 5 fotografie.");
+this.value="";
+return;
 }
 
-function escapeHTML(value){
- return String(value).replace(/[&<>"']/g,c=>({
-  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
- }[c]));
+for(const file of files){
+if(!file.type.startsWith("image/"))continue;
+if(file.size>1.5*1024*1024){
+alert("Ogni fotografia deve essere inferiore a 1,5 MB.");
+this.value="";
+selectedImages=[];
+preview.innerHTML="";
+return;
 }
-
-function startPublishing(profile){
- document.getElementById("profileType").value=profile;
- document.getElementById("publicationTitle").textContent="Pubblica come "+profile;
- document.getElementById("publicationDescription").textContent=
-  profile==="Privato"?
-  "Inserisci i dati del tuo mezzo e scegli il piano per il singolo annuncio.":
-  "Inserisci i dati della tua azienda e scegli il piano aziendale.";
- document.getElementById("publicationCard").classList.remove("hidden");
- document.getElementById("publicationCard").scrollIntoView({behavior:"smooth"});
+const data=await new Promise(resolve=>{
+const reader=new FileReader();
+reader.onload=e=>resolve(e.target.result);
+reader.readAsDataURL(file);
+});
+selectedImages.push(data);
+const img=document.createElement("img");
+img.src=data;
+preview.appendChild(img);
 }
-
-function choosePlan(plan){
- currentPlan=plan;
- startPublishing(plan==="singolo"?"Privato":"Azienda");
- let name=plan==="singolo"?"Annuncio singolo: 5 € per 5 giorni":
- plan==="business"?"Business: 15 € al mese, fino a 5 veicoli":
- "Business Unlimited: 50 € al mese, veicoli illimitati";
- toast(name+". Il pagamento reale sarà collegato nella fase successiva.");
-}
-
-document.getElementById("vehiclePhotos").addEventListener("change",function(){
- const files=Array.from(this.files||[]);
- selectedPhotos=[];
- const preview=document.getElementById("photoPreview");
- preview.innerHTML="";
- if(files.length>8){
-  this.value="";
-  toast("Puoi selezionare al massimo 8 fotografie.");
-  return;
- }
- files.forEach(file=>{
-  if(!file.type.startsWith("image/"))return;
-  const reader=new FileReader();
-  reader.onload=e=>{
-   selectedPhotos.push(e.target.result);
-   const img=document.createElement("img");
-   img.src=e.target.result;
-   img.alt="Anteprima fotografia";
-   preview.appendChild(img);
-  };
-  reader.readAsDataURL(file);
- });
 });
 
-document.getElementById("vehicleForm").addEventListener("submit",function(e){
- e.preventDefault();
+document.getElementById("listingForm").addEventListener("submit",function(e){
+e.preventDefault();
 
- const profile=document.getElementById("profileType").value;
- const photos=selectedPhotos.slice();
+const from=document.getElementById("dateFrom").value;
+const to=document.getElementById("dateTo").value;
 
- if(!photos.length){
-  toast("Carica almeno una fotografia.");
-  return;
- }
+if(!selectedImages.length){
+alert("Carica almeno una fotografia.");
+return;
+}
+if(to<from){
+alert("La data finale deve essere successiva alla data iniziale.");
+return;
+}
 
- const data={
-  id:Date.now(),
-  profile:profile,
-  type:document.getElementById("vehicleType").value,
-  brand:document.getElementById("vehicleBrand").value.trim(),
-  model:document.getElementById("vehicleModel").value.trim(),
-  city:document.getElementById("vehicleCity").value.trim(),
-  price:Number(document.getElementById("vehiclePrice").value),
-  email:document.getElementById("vehicleEmail").value.trim(),
-  description:document.getElementById("vehicleDescription").value.trim(),
-  photos:photos,
-  createdAt:new Date().toISOString()
- };
+const item={
+id:Date.now().toString(),
+name:document.getElementById("name").value.trim(),
+category:document.getElementById("category").value,
+city:document.getElementById("city").value.trim(),
+price:Number(document.getElementById("price").value),
+from,to,
+description:document.getElementById("description").value.trim(),
+photos:selectedImages
+};
 
- if(!data.brand||!data.model||!data.city||!data.email||!data.type||
- !Number.isFinite(data.price)||data.price<0||
- !document.getElementById("acceptDeclaration").checked){
-  toast("Controlla tutti i campi obbligatori.");
-  return;
- }
+const items=load();
+items.unshift(item);
+if(!save(items))return;
 
- const existing=getVehicles();
- existing.unshift(data);
-
- if(!saveVehicles(existing))return;
-
- this.reset();
- selectedPhotos=[];
- document.getElementById("photoPreview").innerHTML="";
- document.getElementById("publicationMessage").textContent=
- "Anteprima salvata su questo dispositivo. L'annuncio non è ancora online pubblicamente.";
- renderVehicles();
- document.getElementById("annunci").scrollIntoView({behavior:"smooth"});
- toast("Annuncio salvato nell'anteprima!");
+this.reset();
+selectedImages=[];
+document.getElementById("preview").innerHTML="";
+document.getElementById("message").textContent=
+"Anteprima salvata su questo dispositivo. Non è ancora pubblicata online.";
+render();
+document.getElementById("annunci").scrollIntoView();
 });
 
-function openLogin(){
- document.getElementById("loginModal").classList.add("show");
-}
-function closeLogin(){
- document.getElementById("loginModal").classList.remove("show");
-}
-function demoAccount(){
- const name=document.getElementById("accountName").value.trim();
- const email=document.getElementById("accountEmail").value.trim();
- if(!name||!email||!email.includes("@")){
-  toast("Inserisci nome ed email validi.");
-  return;
- }
- toast("Questa è una schermata dimostrativa: attiveremo gli account reali con Firebase.");
- closeLogin();
+function booking(id){
+const item=load().find(x=>x.id===id);
+if(!item)return;
+alert("Hai selezionato: "+item.name+
+"\nPrezzo giornaliero: "+item.price+" €"+
+"\nCommissione prevista Help Me Rent: 20%"+
+"\n\nLe prenotazioni e i pagamenti online saranno attivati con il backend.");
 }
 
-renderVehicles();
+function openModal(){
+document.getElementById("userModal").classList.add("show");
+}
+function closeModal(){
+document.getElementById("userModal").classList.remove("show");
+}
+
+initCategories();
+render();
 </script>
 </body>
 </html>
